@@ -31,3 +31,26 @@
   background-image: url('../Assets/bg_img.png');
   background-size: cover; 
 }
+
+.right-side {
+  position: absolute;
+  right: 0;
+  width: 50%; 
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h-content {
+  font-size: 30px;
+  color: #212441;
+  font-weight: bold;
+}
+
+.p-content {
+  color: #212441;
+  font-weight: lighter;
+  padding: 15px;
+}
