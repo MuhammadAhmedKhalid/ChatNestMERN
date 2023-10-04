@@ -1,25 +1,60 @@
 @keyframes backgroundAnimation {
-    0% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 100% 0%;
-    }
-    100% {
-      background-position: 0% 0%;
-    }
+  0% {
+    background-position: 0% 0%;
   }
-  
-  .bg {
-    margin: 0;
-    padding: 0;
-    background-color: #212441;
-    background-image: linear-gradient(50deg, #212441, #D35831);
-    background-size: 200% 100%;
-    animation: backgroundAnimation 10s linear infinite;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  50% {
+    background-position: 100% 0%;
   }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.bg {
+  margin: 0;
+  padding: 0;
+  background-color: #212441;
+  background-image: linear-gradient(50deg, #212441, #D35831);
+  background-size: 200% 100%;
+  animation: backgroundAnimation 10s linear infinite;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-rectangle {
+  width: 900px;
+  height: 600px;
+  background: #dad7d7;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
+
+.center-rectangle::before {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 2px;
+  height: 90%;
+  background: linear-gradient(transparent, #959595, #959595, transparent);
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.center-rectangle::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background-image: url('../Assets/bg_img.png');
+  background-size: cover; 
+}
+
