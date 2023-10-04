@@ -1,10 +1,11 @@
-import './Styling/LandingScreen.css';
+import Navbar from './Components/Navbar';
+import CenterBox from './Components/LandingScreen/CenterBox';
 
 function App() {
   return (
-    <div className="bg">
-      <div className="center-rectangle">
-      </div>
+    <div className='bg'>
+      <Navbar/>
+      <CenterBox/>
     </div>
   );
 }
