@@ -1,13 +1,11 @@
-import './App.css';
+import './Styling/LandingScreen.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="bg">
         <p>
           ChatNest MERN Typescript.
         </p>
-      </header>
     </div>
   );
 }
