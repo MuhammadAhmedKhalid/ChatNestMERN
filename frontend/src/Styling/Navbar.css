@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px; 
+  padding: 0px 30px; 
   background-color: transparent; 
   backdrop-filter: blur(10px); 
   -webkit-backdrop-filter: blur(10px);
@@ -23,4 +23,20 @@
   color: #dad7d7;
   cursor: pointer;
   font-size: 18PX;
+}
+
+@media screen and (max-width: 768px) {
+
+  .navbar {
+    padding: 0px 17.5px; 
+  }
+
+  .navbar-right {
+    gap: 15px;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
+
 }
