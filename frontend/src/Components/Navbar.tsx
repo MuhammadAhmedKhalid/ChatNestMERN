@@ -1,7 +1,7 @@
 import '../Styling/Navbar.css'
 import { useDispatch } from 'react-redux';
-import { openSignIn } from '../Redux/SignIn/Actions';
-import {  openSignUp } from '../Redux/SignUp/Actions'
+import { openSignIn, closeSignIn } from '../Redux/SignIn/Actions';
+import {  openSignUp, closeSignUp } from '../Redux/SignUp/Actions'
 
 function Navbar() {
 
@@ -9,16 +9,23 @@ function Navbar() {
 
   const handleSignIn = () => {
     dispatch(openSignIn());
+    dispatch(closeSignUp());
   }
 
   const handlSignUp = () => {
     dispatch(openSignUp());
+    dispatch(closeSignIn());
+  }
+
+  const handleHome = () => {
+    dispatch(closeSignUp());
+    dispatch(closeSignIn());
   }
 
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <p className="nav-link" style={{fontWeight: 'bold'}}>ChatNest</p>
+        <p className="nav-link" style={{fontWeight: 'bold'}} onClick={handleHome}>ChatNest</p>
       </div>
       <div className="navbar-right">
         <p className="nav-link" onClick={handleSignIn}>Sign In</p>
