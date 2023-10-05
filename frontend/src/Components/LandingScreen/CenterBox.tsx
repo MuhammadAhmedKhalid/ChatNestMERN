@@ -1,6 +1,11 @@
 import '../../Styling/LandingScreen.css'
+import { useSelector } from 'react-redux';
 
 function CenterBox() {
+
+  const signIn = useSelector((state:any) => state.signInReducer.isSignIn);
+  const signUp = useSelector((state:any) => state.signUpReducer.isSignUp);
+
   return (
     <div className="center-rectangle">
       <div className="right-side">

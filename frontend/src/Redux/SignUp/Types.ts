@@ -1,0 +1,2 @@
+export const OPEN_SIGNUP = 'OPEN_SIGNUP'
+export const CLOSE_SIGNUP = 'CLOSE_SIGNUP'
