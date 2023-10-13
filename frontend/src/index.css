@@ -34,3 +34,8 @@ code {
   font-family: Arial, sans-serif;
   height: 100vh;
 }
+
+.x-axis {
+  display: flex;
+  justify-content: center;
+}

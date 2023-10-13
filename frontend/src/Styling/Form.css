@@ -1,9 +1,33 @@
-.sign-in-form {
+.sign-in-form, .sign-up-form {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.password-strength {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.password-strength.weak {
+  color: red;
+}
+
+.password-strength.moderate {
+  color: orange;
+}
+
+.password-strength.strong {
+  color: green;
+}
+
 
 .title {
   margin-bottom: 25px;
@@ -21,6 +45,27 @@
   margin-bottom: 15px;
 }
 
+.options-group {
+  margin-bottom: 5px;
+}
+
+.form-p, .Select {
+  font-size: 14px;
+}
+
+select {
+  height: 50%;
+  margin-left: 10px;
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #777;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
 input {
   width: 100%;
   padding: 10px 10px 10px 0px;
@@ -28,6 +73,10 @@ input {
   border: none;
   border-bottom: 1px solid #777; 
   font-size: 16px;
+}
+
+input[type="radio"] {
+  transform: scale(0.75);
 }
 
 input::placeholder {
@@ -52,8 +101,16 @@ button:hover {
     padding: 20px;
   }
 
+  .error-message {
+    font-size: 10px;
+  }
+
   .form-group {
     margin-bottom: 10px;
+  }
+
+  select {
+    font-size: 14px;
   }
 
   input {
