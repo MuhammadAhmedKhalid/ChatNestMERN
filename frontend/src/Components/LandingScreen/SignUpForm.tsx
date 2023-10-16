@@ -75,9 +75,7 @@ function SignUpForm() {
       const usernameRegex = /^(?!.*[A-Z])[a-z0-9_]+$/;
   
       if (!value.match(usernameRegex)) {
-        setUsernameError(
-          "Invalid username."
-        );
+        setUsernameError("Invalid username.");
       } else {
         setUsernameError('');
       }
@@ -92,7 +90,7 @@ function SignUpForm() {
   const signup = async (userData: any) => {
     try {
       const response = await axios.post('http://localhost:5000/users/register', userData);
-      alert(response.status);
+      alert(response.data.message);
     } catch (error:any) {
       alert(error.response.data.error);
     }
@@ -102,7 +100,6 @@ function SignUpForm() {
     event.preventDefault();
     if (passwordsMatch) {
       signup(formData);
-      //console.log(formData);
     }
   };
 
@@ -240,7 +237,7 @@ function SignUpForm() {
           }
         </div>
         <div className="form-group">
-          <button type="submit" disabled={!passwordsMatch}>Sign Up</button>
+          <button type="submit" disabled={!passwordsMatch || usernameError.length>0}>Sign Up</button>
         </div>
       </form>
     </div>
