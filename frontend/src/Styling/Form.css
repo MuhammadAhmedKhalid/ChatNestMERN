@@ -96,6 +96,11 @@ button:hover {
   background-color: #c14621;
 }
 
+button[disabled] {
+  background-color: #ccc;
+  cursor: auto;
+}
+
 @media screen and (max-width: 768px) {
   .sign-in-form {
     padding: 20px;

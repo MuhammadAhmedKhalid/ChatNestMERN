@@ -15,6 +15,7 @@ function SignUpForm() {
   const [passwordError, setPasswordError] = useState<String>('');
   const [confirmPasswordError, setConfirmPasswordError] = useState<String>('');
   const [passwordStrength, setPasswordStrength] = useState<String>('');
+  const [passwordsMatch, setPasswordsMatch] = useState<boolean>(false);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -59,12 +60,14 @@ function SignUpForm() {
         setPasswordStrength('Moderate');
       }
     }
-  
+
     if (fieldName === 'confirmPassword') {
       if (value !== formData.password) {
-        setConfirmPasswordError('Passwords do not match.');
+        setConfirmPasswordError('Passwords do not match');
+        setPasswordsMatch(false);
       } else {
         setConfirmPasswordError('');
+        setPasswordsMatch(true);
       }
     }
 
@@ -88,7 +91,9 @@ function SignUpForm() {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(formData);
+    if (passwordsMatch) {
+      console.log(formData);
+    }
   };
 
   return (
@@ -214,7 +219,7 @@ function SignUpForm() {
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={(e) => handleChange('confirmPassword', e.target.value)}
-            placeholder="Confirm Password"
+            placeholder="Re-enter Password"
             required
             style={{ borderColor: confirmPasswordError ? 'red' : '' }}
           />
@@ -225,7 +230,7 @@ function SignUpForm() {
           }
         </div>
         <div className="form-group">
-          <button type="submit">Sign Up</button>
+          <button type="submit" disabled={!passwordsMatch}>Sign Up</button>
         </div>
       </form>
     </div>
