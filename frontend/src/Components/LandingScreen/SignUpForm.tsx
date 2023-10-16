@@ -89,10 +89,20 @@ function SignUpForm() {
     });
   };
 
+  const signup = async (userData: any) => {
+    try {
+      const response = await axios.post('http://localhost:5000/users/register', userData);
+      alert(response.status);
+    } catch (error:any) {
+      alert(error.response.data.error);
+    }
+  }
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (passwordsMatch) {
-      console.log(formData);
+      signup(formData);
+      //console.log(formData);
     }
   };
 
