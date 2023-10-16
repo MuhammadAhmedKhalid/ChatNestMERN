@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
+import { useDispatch } from 'react-redux';
+import { openSignIn } from '../../Redux/SignIn/Actions';
+import { closeSignUp } from '../../Redux/SignUp/Actions'
 
 function SignUpForm() {
+
+  const dispatch = useDispatch();
 
   interface Country {
     value: string;
@@ -91,6 +96,8 @@ function SignUpForm() {
     try {
       const response = await axios.post('http://localhost:5000/users/register', userData);
       alert(response.data.message);
+      dispatch(openSignIn());
+      dispatch(closeSignUp());
     } catch (error:any) {
       alert(error.response.data.error);
     }

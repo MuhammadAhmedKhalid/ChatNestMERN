@@ -1,7 +1,7 @@
 import '../Styling/Navbar.css'
 import { useDispatch } from 'react-redux';
 import { openSignIn, closeSignIn } from '../Redux/SignIn/Actions';
-import {  openSignUp, closeSignUp } from '../Redux/SignUp/Actions'
+import { openSignUp, closeSignUp } from '../Redux/SignUp/Actions'
 
 function Navbar() {
 
