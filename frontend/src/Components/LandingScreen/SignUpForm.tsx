@@ -4,6 +4,7 @@ import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { openSignIn } from '../../Redux/SignIn/Actions';
 import { closeSignUp } from '../../Redux/SignUp/Actions'
+import * as emailjs from 'emailjs-com';
 
 function SignUpForm() {
 
@@ -98,6 +99,15 @@ function SignUpForm() {
       alert(response.data.message);
       dispatch(openSignIn());
       dispatch(closeSignUp());
+
+      const templateParams = {
+        userId: formData.username,
+        user_name: formData.fullName,
+        user_email: formData.email,
+    };
+
+    emailjs.send('service_tjvggdm', 'template_fni60cj', templateParams, 'nvzT6R7t3FB6c7LN0');
+
     } catch (error:any) {
       alert(error.response.data.error);
     }
