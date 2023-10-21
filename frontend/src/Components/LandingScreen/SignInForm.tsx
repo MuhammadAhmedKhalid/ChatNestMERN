@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import '../../Styling/Form.css';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function SignInForm() {
 
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [usernameError, setUsernameError] = useState<String>('');
+
+  const navigate = useNavigate();
 
   const handleChange = (fieldName: string, value: string) => {
 
@@ -29,6 +32,8 @@ function SignInForm() {
     try {
       const response = await axios.post('http://localhost:5000/users/login', userData);
       alert(response.data.message);
+      // shift to home screen
+      navigate('/home');
     } catch (error: any) {
       alert(error.response.data.error);
     }
