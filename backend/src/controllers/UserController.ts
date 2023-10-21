@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../models/User.ts";
 import * as bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 export const createUser = async (req: Request, res: Response) => {
     try {
@@ -29,13 +30,11 @@ export const createUser = async (req: Request, res: Response) => {
 export const loginUser = async (req: Request, res: Response) => {
     try {
         const {username, password} = req.body;
-
         const user = await User.findOne({username});
 
         if(!user){
             return res.status(404).json({ error: 'User not found.' });
         }
-
 
         // using a type assertion to tell TS that 'user' is not null
         const userWithPass = user as { password: string};
@@ -43,7 +42,20 @@ export const loginUser = async (req: Request, res: Response) => {
         const result = await bcrypt.compare(password, userWithPass.password);
 
         if(result){
-            res.status(200).json({ message: 'Login successful.' });
+            const SECRET_KEY = process.env.SECRET_KEY;
+
+            if (!SECRET_KEY) {
+                console.error('ERROR: SECRET_KEY is not set. Please configure it.');
+                return res.status(500).json({ error: 'Internal server error' });
+            }
+            
+            try {
+                const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
+                res.status(200).json({ message: 'Login successful.', token });
+            } catch (error) {
+                res.status(500).json({ error: 'Internal server error' });
+            }
+
         } else {
             res.status(401).json({ error:'Invalid password.' });
         }
