@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../Styling/Form.css';
+import axios from 'axios';
 
 function SignInForm() {
 
@@ -24,9 +25,18 @@ function SignInForm() {
     });
   };
 
+  const signin = async (userData: any) => {
+    try {
+      const response = await axios.post('http://localhost:5000/users/login', userData);
+      alert(response.data.message);
+    } catch (error: any) {
+      alert(error.response.data.error);
+    }
+  }
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(formData);
+    signin(formData);
   };
 
   return (
