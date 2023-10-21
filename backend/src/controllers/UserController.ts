@@ -27,5 +27,32 @@ export const createUser = async (req: Request, res: Response) => {
 }
 
 export const loginUser = async (req: Request, res: Response) => {
-    
+    try {
+        const {username, password} = req.body;
+
+        const user = await User.findOne({username});
+
+        if(!user){
+            res.status(404).json({ error: 'User not found.' });
+        }
+
+
+        // using a type assertion to tell TS that 'user' is not null
+        const userWithPass = user as { password: string};
+
+        bcrypt.compare(password, userWithPass.password, (err, result) => {
+            if(err){
+                return res.status(500).json({ error: 'Password comparison error.' });
+            }
+
+            if(result){
+                res.status(200).json({ message: 'Login successful.' });
+            } else {
+                res.status(401).json({ error:'Invalid password.' });
+            }
+        });
+        
+    } catch (error) {
+        res.status(400).json({ error: 'Login failed.' });
+    }
 }

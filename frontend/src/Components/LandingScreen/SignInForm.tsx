@@ -4,8 +4,20 @@ import '../../Styling/Form.css';
 function SignInForm() {
 
   const [formData, setFormData] = useState({ username: '', password: '' });
+  const [usernameError, setUsernameError] = useState<String>('');
 
   const handleChange = (fieldName: string, value: string) => {
+
+    if (fieldName === 'username') {
+      const usernameRegex = /^(?!.*[A-Z])[a-z0-9_]+$/;
+  
+      if (!value.match(usernameRegex)) {
+        setUsernameError("Invalid username.");
+      } else {
+        setUsernameError('');
+      }
+    }
+
     setFormData({
       ...formData,
       [fieldName]: value,
@@ -31,7 +43,14 @@ function SignInForm() {
               onChange={(e) => handleChange('username', e.target.value)}
               placeholder="Username"
               required
+              style={{ borderColor: usernameError ? 'red' : '', 
+              color: usernameError ? 'red' : '', }}
             />
+            {usernameError && (
+              <div className="error-message">
+                {usernameError}
+              </div>
+            )}
           </div>
           <div className="form-group">
             <input
@@ -45,7 +64,7 @@ function SignInForm() {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className='sign-in-bttn'>Sign In</button>
+            <button type="submit" className='sign-in-bttn'  disabled={usernameError.length>0}>Sign In</button>
           </div>
         </form>
       </div>
