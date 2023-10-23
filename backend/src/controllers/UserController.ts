@@ -50,8 +50,8 @@ export const loginUser = async (req: Request, res: Response) => {
             }
             
             try {
-                const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
-                res.status(200).json({ message: 'Login successful.', token });
+                const sessionToken = jwt.sign({ username: user.username }, SECRET_KEY);
+                res.status(200).json({ message: 'Login successful.', token: sessionToken  });
             } catch (error) {
                 res.status(500).json({ error: 'Internal server error' });
             }
