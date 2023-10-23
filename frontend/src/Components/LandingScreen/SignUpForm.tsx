@@ -127,6 +127,7 @@ function SignUpForm() {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
+            autoFocus
             type="text"
             id="fullName"
             name="fullName"

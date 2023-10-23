@@ -32,6 +32,7 @@ function SignInForm() {
     try {
       const response = await axios.post('http://localhost:5000/users/login', userData);
       alert(response.data.message);
+      localStorage.setItem('jwt', response.data.token);
       // shift to home screen
       navigate('/home');
     } catch (error: any) {
@@ -51,6 +52,7 @@ function SignInForm() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
+              autoFocus
               type="text"
               id="username"
               name="username"
