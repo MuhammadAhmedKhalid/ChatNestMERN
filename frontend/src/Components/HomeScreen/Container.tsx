@@ -1,6 +1,7 @@
 import '../../Styling/HomeContainer.css'
 import InputEmoji from 'react-input-emoji'
 import { useState } from 'react'
+import activeUser from '../../Assets/active-user.png'
 
 function Container() {
 
@@ -9,6 +10,17 @@ function Container() {
     function handleOnEnter (text: String) {
       console.log(text);
     }
+
+    const activeUsers = ["imuhammad", "ahmus", "ahmed", "kinza123", "areeba", "roha", "amna", "shabana", "khalid",];
+    
+    const activeUsersList = activeUsers.map((users, index) => (
+        <div className='active-user' key={index}>
+            <img className='active-user-pfp' src={activeUser} alt='Active user pfp.'/>
+            <p className='user-name'>{users}</p>
+            <div className='active-user-signal'></div>
+        </div>
+    ));
+    
 
     return (
         <div className='center-box'>
@@ -23,6 +35,7 @@ function Container() {
             </div>
             <div className='active-users'>
                 <h4>ACTIVE USERS</h4>
+                {activeUsersList}
             </div>
         </div>
     )
