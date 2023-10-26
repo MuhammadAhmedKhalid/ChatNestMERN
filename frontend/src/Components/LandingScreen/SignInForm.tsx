@@ -33,7 +33,6 @@ function SignInForm() {
       const response = await axios.post('http://localhost:5000/users/login', userData);
       alert(response.data.message);
       localStorage.setItem('jwt', response.data.token);
-      // shift to home screen
       navigate('/home');
     } catch (error: any) {
       alert(error.response.data.error);

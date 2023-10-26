@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { openSignIn, closeSignIn } from '../Redux/SignIn/Actions';
 import { openSignUp, closeSignUp } from '../Redux/SignUp/Actions'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Navbar() {
 
@@ -21,10 +22,25 @@ function Navbar() {
     dispatch(closeSignIn());
   }
 
+  const signout = async (storedToken:any) => {
+    try {
+      
+      const headers = {
+        Authorization: `Bearer ${storedToken}`,
+      };
+      
+      const response = await axios.post('http://localhost:5000/users/logout', {}, {headers});
+      alert(response.data.message);
+    
+    } catch (error:any) {
+      alert(error.response.data.error);
+    }
+  }
+
   const handleLogout = () => {
+    signout(storedToken);
     localStorage.removeItem('jwt');
     navigate('/');
-    // call logout endpoint which will expire jwt
   }
 
   const handleLogo = () => {

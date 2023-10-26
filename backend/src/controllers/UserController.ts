@@ -46,14 +46,14 @@ export const loginUser = async (req: Request, res: Response) => {
 
             if (!SECRET_KEY) {
                 console.error('ERROR: SECRET_KEY is not set. Please configure it.');
-                return res.status(500).json({ error: 'Internal server error' });
+                return res.status(500).json({ error: 'Internal server error.' });
             }
             
             try {
                 const sessionToken = jwt.sign({ username: user.username }, SECRET_KEY);
                 res.status(200).json({ message: 'Login successful.', token: sessionToken  });
             } catch (error) {
-                res.status(500).json({ error: 'Internal server error' });
+                res.status(500).json({ error: 'Internal server error.' });
             }
 
         } else {
@@ -63,4 +63,25 @@ export const loginUser = async (req: Request, res: Response) => {
     } catch (error) {
         res.status(400).json({ error: 'Login failed.' });
     }
+}
+
+export const logoutUser = async (req: Request, res: Response) => {
+    
+    const token = req.header("Authorization");
+    const SECRET_KEY = process.env.SECRET_KEY;
+
+    if (!SECRET_KEY) {
+        console.error('ERROR: SECRET_KEY is not set. Please configure it.');
+        return res.status(500).json({ error: 'Internal server error.' });
+    }
+    
+    if (!token) {
+        return res.status(401).json({ error: "Unauthorized." });
+    }
+
+    // Creating a new token with an immediate expiration (1 second)
+    jwt.sign({}, SECRET_KEY, { expiresIn: "1s" });
+
+    res.status(200).json({ message: "Logout successful." });
+
 }
