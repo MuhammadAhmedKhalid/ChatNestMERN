@@ -23,15 +23,13 @@ function Navbar() {
   }
 
   const signout = async (storedToken:any) => {
-    try {
-      
+    try { 
       const headers = {
         Authorization: `Bearer ${storedToken}`,
       };
       
       const response = await axios.post('http://localhost:5000/users/logout', {}, {headers});
       alert(response.data.message);
-    
     } catch (error:any) {
       alert(error.response.data.error);
     }
@@ -56,7 +54,11 @@ function Navbar() {
       <div className="navbar-right">
         {
           storedToken !== null ? 
-          <p className="nav-link" onClick={handleLogout}>Logout</p> :
+          <>
+            {/* Show profile info and give edit access */}
+            <p className="nav-link">My Profile</p> 
+            <p className="nav-link" onClick={handleLogout}>Logout</p>
+          </> :
           <>
             <p className="nav-link" onClick={handleSignIn}>Sign In</p>
             <p className="nav-link" onClick={handleSignUp}>Sign Up</p>
