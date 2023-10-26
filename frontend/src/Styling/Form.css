@@ -53,7 +53,7 @@
   font-size: 14px;
 }
 
-select {
+form select {
   height: 50%;
   margin-left: 10px;
   width: 100%;
@@ -66,7 +66,7 @@ select {
   transition: border-color 0.2s;
 }
 
-input {
+form input {
   width: 100%;
   padding: 10px 10px 10px 0px;
   background: transparent;
@@ -75,15 +75,15 @@ input {
   font-size: 16px;
 }
 
-input[type="radio"] {
+form input[type="radio"] {
   transform: scale(0.75);
 }
 
-input::placeholder {
+form input::placeholder {
   color: #777;
 }
 
-button {
+form button {
   background-color: #D35831;
   color: #fff;
   border: none;
@@ -92,11 +92,11 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+form button:hover {
   background-color: #c14621;
 }
 
-button[disabled] {
+form button[disabled] {
   background-color: #ccc;
   cursor: auto;
 }
@@ -114,11 +114,11 @@ button[disabled] {
     margin-bottom: 10px;
   }
 
-  select {
+  form select {
     font-size: 14px;
   }
 
-  input {
+  form input {
     font-size: 14px;
   }
 

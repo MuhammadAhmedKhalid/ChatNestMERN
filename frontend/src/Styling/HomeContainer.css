@@ -11,9 +11,12 @@
     align-items: center;
 }
   
-.center-content {
+.messages-area {
     flex: 1;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
 }
   
 .active-users {
@@ -35,13 +38,12 @@
       height: 690spx;
     }
 
-    .center-content {
+    .messages-area {
         flex: 1;
     }
     
     .active-users {
         display: none;
     }
-
   
 }

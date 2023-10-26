@@ -1,10 +1,21 @@
 import { store } from './Redux/Store'
 import { Provider } from 'react-redux'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate  } from 'react-router-dom';
 import Home from './Components/HomeScreen/Home';
 import LandingPage from './Components/LandingScreen/LandingPage';
+import { useEffect } from 'react'
 
 function App() {
+
+  const storedToken = localStorage.getItem('jwt');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (storedToken !== null) {
+      navigate('/home'); 
+    }
+  }, [storedToken, navigate])
+
   return (
     <div className='bg'>
       <Provider store={store}>

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { openSignIn } from '../../Redux/SignIn/Actions';
 import { closeSignUp } from '../../Redux/SignUp/Actions'
 import * as emailjs from 'emailjs-com';
+import '../../Styling/Form.css';
 
 function SignUpForm() {
 
