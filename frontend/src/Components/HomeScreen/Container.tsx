@@ -11,7 +11,10 @@ function Container() {
       console.log(text);
     }
 
-    const activeUsers = ["imuhammad", "ahmus", "ahmed", "kinza123", "areeba", "roha", "amna", "shabana", "khalid",];
+    const activeUsers = ["imuhammad", "ahmus", "ahmed", "kinza123", "areeba", "roha", "amna", "shabana", "khalid",
+    "imuhammad", "ahmus", "ahmed", "kinza123", "areeba", "roha", "amna", "shabana", "khalid",];
+
+    // const activeUsers = ["imuhammad", "ahmus", "ahmed", "kinza123", "areeba", "roha", "amna", "shabana", "khalid",];
     
     const activeUsersList = activeUsers.map((users, index) => (
         <div className='active-user' key={index}>
@@ -24,6 +27,7 @@ function Container() {
 
     return (
         <div className='center-box'>
+            {/* show messages */}
             <div className='messages-area'>
                 <InputEmoji
                     value={text}
@@ -36,6 +40,7 @@ function Container() {
             <div className='active-users'>
                 <h4>ACTIVE USERS</h4>
                 {activeUsersList}
+                {/* scrollable active users list */}
             </div>
         </div>
     )
